@@ -23,8 +23,14 @@ jobs:
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
 
-      - name: Set up Geckodriver for Firefox
-        uses: browser-actions/setup-geckodriver@v1
+      - name: Install Firefox and Geckodriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+          GECKODRIVER_VERSION=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r '.tag_name')
+          wget https://github.com/mozilla/geckodriver/releases/download/$GECKODRIVER_VERSION/geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz
+          tar -xzf geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz
+          sudo mv geckodriver /usr/local/bin/
 
       - name: Cache Maven packages
         uses: actions/cache@v3
