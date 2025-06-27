@@ -19,7 +19,6 @@ public class DriverManager {
                     driver = new ChromeDriver();
                     break;
                 case "edge":
-//                default:
                     driver = new EdgeDriver();
                     break;
 
