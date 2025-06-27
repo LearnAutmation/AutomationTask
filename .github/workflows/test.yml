@@ -32,5 +32,25 @@ jobs:
       - name: Force Chrome in config
         run: echo "browser=chrome" > src/test/resources/config.properties
 
+#      - name: Run Tests with Maven
+#        run: mvn clean test
       - name: Run Tests with Maven
-        run: mvn clean test
+        run: mvn clean test -Daut.browser=chrome -Dsurefire.useFile=false
+
+      - name: Upload Surefire Reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+
+      - name: Upload ExtentReport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: test-output/
+
+
+
+
