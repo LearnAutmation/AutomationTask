@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
-public class ApiTests {
+public class ApiTest {
 
     private String token;
     private String baseUrl;
