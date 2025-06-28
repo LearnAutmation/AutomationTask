@@ -2,56 +2,49 @@ package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.net.URL;
 
 public class DriverManager {
     private static WebDriver driver;
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            String browser = ConfigReader.get("browser");
+            try {
+                String browser = ConfigReader.get("browser").toLowerCase();
+                boolean useGrid = Boolean.parseBoolean(ConfigReader.get("use.grid"));
 
-            switch (browser.toLowerCase()) {
-                case "firefox":
-                    driver = new FirefoxDriver();
-                    break;
+                if (useGrid) {
+                    String gridUrl = ConfigReader.get("grid.url");
+                    DesiredCapabilities capabilities = new DesiredCapabilities();
+                    capabilities.setBrowserName(browser);
 
-                case "chrome":
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--headless=new");
-                    chromeOptions.addArguments("--no-sandbox");
-                    chromeOptions.addArguments("--disable-dev-shm-usage");
-                    chromeOptions.addArguments("--disable-gpu");
-
-                    // Unique user-data-dir to avoid session conflict in CI
-                    try {
-                        Path tempProfile = Files.createTempDirectory("chrome-profile");
-                        chromeOptions.addArguments("--user-data-dir=" + tempProfile.toAbsolutePath());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    driver = new RemoteWebDriver(new URL(gridUrl), capabilities);
+                } else {
+                    switch (browser) {
+                        case "chrome":
+                            driver = new ChromeDriver();
+                            break;
+                        case "firefox":
+                            driver = new FirefoxDriver();
+                            break;
+                        case "edge":
+                            driver = new EdgeDriver();
+                            break;
+                        default:
+                            throw new RuntimeException("Unsupported browser: " + browser);
                     }
+                }
 
-                    driver = new ChromeDriver(chromeOptions);
-                    break;
-
-                case "edge":
-                default:
-                    driver = new EdgeDriver();
-                    break;
-            }
-
-            // Avoid maximizing in headless (especially in CI)
-            if (!browser.equalsIgnoreCase("chrome") || System.getenv("CI") == null) {
                 driver.manage().window().maximize();
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to initialize WebDriver", e);
             }
         }
-
         return driver;
     }
 
