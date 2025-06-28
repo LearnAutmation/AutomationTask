@@ -22,6 +22,7 @@ jobs:
 
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
+
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
@@ -29,30 +30,14 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      - name: Force Chrome in config
-        run: echo "browser=chrome" > src/test/resources/config.properties
-
-#      - name: Run Tests with Maven
-#        run: mvn clean test
-#      - name: Run Tests with Maven
-#        run: mvn clean test -Daut.browser=chrome -Dsurefire.useFile=false
-      - name: Run Tests with Maven
-        run: mvn clean test -Daut.browser=chrome -Dsurefire.useFile=false || true
-
-      - name: Upload Surefire Reports
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: surefire-reports
-          path: target/surefire-reports/
-
-#      - name: Upload ExtentReport
-#        if: always()
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: extent-report
-#          path: test-output/
-
-
-
-
+      # ✅ Dynamically set config.properties with all required keys
+      - name: Set up config.properties
+        run: |
+          echo "browser=chrome" > src/test/resources/config.properties
+          echo "aut.baseUrl=https://www.saucedemo.com/" >> src/test/resources/config.properties
+          echo "aut.username=standard_user" >> src/test/resources/config.properties
+          echo "aut.password=secret_sauce" >> src/test/resources/config.properties
+          echo "aut.firstName=John" >> src/test/resources/config.properties
+          echo "aut.lastName=Doe" >> src/test/resources/config.properties
+          echo "aut.zip=12345" >> src/test/resources/config.properties
+          echo "ui.checkout.fullMessage=Thank you for your order! Your order has been dispatched, and will arrive jus
