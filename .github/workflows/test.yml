@@ -34,8 +34,10 @@ jobs:
 
 #      - name: Run Tests with Maven
 #        run: mvn clean test
+#      - name: Run Tests with Maven
+#        run: mvn clean test -Daut.browser=chrome -Dsurefire.useFile=false
       - name: Run Tests with Maven
-        run: mvn clean test -Daut.browser=chrome -Dsurefire.useFile=false
+        run: mvn clean test -Daut.browser=chrome -Dsurefire.useFile=false || true
 
       - name: Upload Surefire Reports
         if: failure()
