@@ -40,4 +40,7 @@ jobs:
           echo "aut.firstName=John" >> src/test/resources/config.properties
           echo "aut.lastName=Doe" >> src/test/resources/config.properties
           echo "aut.zip=12345" >> src/test/resources/config.properties
-          echo "ui.checkout.fullMessage=Thank you for your order! Your order has been dispatched, and will arrive jus
+          echo "ui.checkout.fullMessage=Thank you for your order! Your order has been dispatched, and will arrive just as fast as the pony can get there!" >> src/test/resources/config.properties
+          echo "api.baseUrl=https://dummyjson.com" >> src/test/resources/config.properties
+          echo "api.username=emilys" >> src/test/resources/config.properties
+          echo "api.password=emilyspass" >> src/test/resources/config.properties
