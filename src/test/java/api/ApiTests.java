@@ -49,7 +49,7 @@ public class ApiTests {
                 .header("Authorization", "Bearer " + token)
                 .when().get("/auth/me");
 
-        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // ✅ Log response
+        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // Log response
 
                 res.then().statusCode(200).body("email", notNullValue());
     }
@@ -65,7 +65,7 @@ public class ApiTests {
                 .contentType(ContentType.JSON)
                 .body(payload)
                 .when().post("/carts/add");
-        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // ✅ Log response
+        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // Log response
 
                res.then().statusCode(201)
                 .body("userId", equalTo(1));
@@ -82,7 +82,7 @@ public class ApiTests {
                 .contentType(ContentType.JSON)
                 .body(payload)
                 .when().put("/products/1");
-        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // ✅ Log response
+        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // Log response
 
                 res.then().statusCode(200)
                 .body("title", equalTo("Updated Title"))
@@ -98,7 +98,7 @@ public class ApiTests {
 
         Response res = given().baseUri(baseUrl)
                 .when().get("/products/1");
-        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // ✅ Log response
+        System.out.println("Get Authenticated User response:\n" + res.prettyPrint()); // Log response
 
                 res.then().statusCode(200)
                 .body(matchesJsonSchema(schema));
