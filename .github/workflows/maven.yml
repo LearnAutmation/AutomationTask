@@ -30,7 +30,6 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      # ✅ Dynamically set config.properties with all required keys
       - name: Set up config.properties
         run: |
           echo "browser=chrome" > src/test/resources/config.properties
@@ -44,3 +43,13 @@ jobs:
           echo "api.baseUrl=https://dummyjson.com" >> src/test/resources/config.properties
           echo "api.username=emilys" >> src/test/resources/config.properties
           echo "api.password=emilyspass" >> src/test/resources/config.properties
+
+      - name: Run Tests with Maven
+        run: mvn clean test -Dsurefire.useFile=false
+
+      - name: Upload Surefire Reports (if test fails)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
