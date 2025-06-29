@@ -1,86 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="4" failed="1" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-29T13:34:22 IST" name="Default suite" finished-at="2025-06-29T13:34:29 IST" duration-ms="7073">
+  <suite started-at="2025-06-29T13:38:59 IST" name="Default suite" finished-at="2025-06-29T13:39:07 IST" duration-ms="7702">
     <groups>
     </groups>
-    <test started-at="2025-06-29T13:34:22 IST" name="Default test" finished-at="2025-06-29T13:34:29 IST" duration-ms="7073">
+    <test started-at="2025-06-29T13:38:59 IST" name="Default test" finished-at="2025-06-29T13:39:07 IST" duration-ms="7702">
       <class name="api.ApiTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:34:22 IST" name="setup" finished-at="2025-06-29T13:34:25 IST" duration-ms="3828" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:38:59 IST" name="setup" finished-at="2025-06-29T13:39:03 IST" duration-ms="3956" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="getAuthenticatedUser()[pri:1, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:34:25 IST" name="getAuthenticatedUser" finished-at="2025-06-29T13:34:26 IST" duration-ms="627" status="PASS">
+        <test-method signature="getAuthenticatedUser()[pri:1, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:39:03 IST" name="getAuthenticatedUser" finished-at="2025-06-29T13:39:04 IST" duration-ms="651" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getAuthenticatedUser -->
-        <test-method signature="createCartForUser()[pri:2, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:34:26 IST" name="createCartForUser" finished-at="2025-06-29T13:34:27 IST" duration-ms="608" status="PASS">
+        <test-method signature="createCartForUser()[pri:2, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:39:04 IST" name="createCartForUser" finished-at="2025-06-29T13:39:05 IST" duration-ms="593" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createCartForUser -->
-        <test-method signature="updateProductInfo()[pri:3, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:34:27 IST" name="updateProductInfo" finished-at="2025-06-29T13:34:27 IST" duration-ms="590" status="PASS">
+        <test-method signature="updateProductInfo()[pri:3, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:39:05 IST" name="updateProductInfo" finished-at="2025-06-29T13:39:05 IST" duration-ms="593" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateProductInfo -->
-        <test-method signature="validateProductSchema()[pri:4, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:34:27 IST" name="validateProductSchema" finished-at="2025-06-29T13:34:28 IST" duration-ms="803" status="FAIL">
-          <exception class="io.restassured.module.jsv.JsonSchemaValidationException">
-            <message>
-              <![CDATA[com.fasterxml.jackson.core.JsonParseException: no JSON Text to read from input
- at [Source: (InputStreamReader); line: 1, column: 1]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[io.restassured.module.jsv.JsonSchemaValidationException: com.fasterxml.jackson.core.JsonParseException: no JSON Text to read from input
- at [Source: (InputStreamReader); line: 1, column: 1]
-at io.restassured.module.jsv.JsonSchemaValidator$JsonSchemaValidatorFactory.create(JsonSchemaValidator.java:286)
-at io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema(JsonSchemaValidator.java:142)
-at io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema(JsonSchemaValidator.java:127)
-at api.ApiTest.validateProductSchema(ApiTest.java:104)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: com.fasterxml.jackson.core.JsonParseException: no JSON Text to read from input
- at [Source: (InputStreamReader); line: 1, column: 1]
-at com.github.fge.jackson.JsonNodeReader$JsonParseExceptionBuilder.build(JsonNodeReader.java:198)
-at com.github.fge.jackson.JsonNodeReader.readNode(JsonNodeReader.java:150)
-at com.github.fge.jackson.JsonNodeReader.fromReader(JsonNodeReader.java:129)
-at com.github.fge.jackson.JsonLoader.fromReader(JsonLoader.java:186)
-at io.restassured.module.jsv.JsonSchemaValidator$2.createSchemaInstance(JsonSchemaValidator.java:140)
-at io.restassured.module.jsv.JsonSchemaValidator$2.createSchemaInstance(JsonSchemaValidator.java:137)
-at io.restassured.module.jsv.JsonSchemaValidator$JsonSchemaValidatorFactory.create(JsonSchemaValidator.java:284)
-... 31 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- io.restassured.module.jsv.JsonSchemaValidationException -->
+        <test-method signature="validateProductSchema()[pri:4, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:39:05 IST" name="validateProductSchema" finished-at="2025-06-29T13:39:07 IST" duration-ms="1266" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateProductSchema -->
-        <test-method signature="loginWithInvalidCredentials()[pri:5, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:34:28 IST" name="loginWithInvalidCredentials" finished-at="2025-06-29T13:34:29 IST" duration-ms="544" status="PASS">
+        <test-method signature="loginWithInvalidCredentials()[pri:5, instance:api.ApiTest@22ff4249]" started-at="2025-06-29T13:39:07 IST" name="loginWithInvalidCredentials" finished-at="2025-06-29T13:39:07 IST" duration-ms="562" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginWithInvalidCredentials -->
