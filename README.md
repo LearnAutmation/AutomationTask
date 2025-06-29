@@ -30,7 +30,6 @@ Automation_Assignment/
 │   │   └── UiTest/                 # Selenium UI test cases
 │   └── test/resources/
 │       ├── config.properties       # All configurable inputs (URL, credentials, etc.)
-│       └── product_schema.json     # JSON Schema used for validating API response structure
 
 ```
 
@@ -62,7 +61,6 @@ Automation_Assignment/
 
 - Base URI, credentials, and endpoints are configured via `config.properties`
 - REST-assured is used to send requests and assert responses
-- Schema validation for `/products/1` response using JSON schema
 
 ---
 
