@@ -1,0 +1,7 @@
+<suite name="API Test Suite">
+  <test name="ApiTests">
+    <packages>
+      <package name="api"/>
+    </packages>
+  </test>
+</suite>
