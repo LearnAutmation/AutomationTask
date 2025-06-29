@@ -30,6 +30,7 @@ Automation_Assignment/
 │   │   └── UiTest/                 # Selenium UI test cases
 │   └── test/resources/
 │       ├── config.properties       # All configurable inputs (URL, credentials, etc.)
+        └── product_schema.json     # JSON Schema used for validating API response structure
 
 ```
 
